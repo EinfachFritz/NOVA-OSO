@@ -21,8 +21,8 @@ jobs:
       - name: Build NOVA OS
         run: |
           mkdir -p build/boot/grub
-          gcc -m32 -c boot.s -o build/boot.o
-          gcc -m32 -ffreestanding -fno-pie -fno-stack-protector -c kernel.c -o build/kernel.o
+          gcc -m32 -c BOOT.S -o build/boot.o
+          gcc -m32 -ffreestanding -fno-pie -fno-stack-protector -c KERNEL.C -o build/kernel.o
           ld -m elf_i386 -T linker.ld -o build/boot/kernel.elf build/boot.o build/kernel.o
           cp grub.cfg build/boot/grub/grub.cfg
           grub-mkrescue -o build/nova-os.iso build
